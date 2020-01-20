@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MatTableModule } from '@angular/material'  
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,7 +21,8 @@ import { RoomRecipeComponent,FoodRecipesComponent } from './recipes/';
     BrowserModule,
     AppRoutingModule,
     MatTableModule,
-    BrowserAnimationsModule 
+    BrowserAnimationsModule ,
+    FormsModule
   ],
   exports: [
     MatTableModule
