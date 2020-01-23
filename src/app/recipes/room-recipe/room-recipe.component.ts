@@ -8,6 +8,7 @@ import * as tables from './roomObj';
   styleUrls: ['./room-recipe.component.scss']
 })
 export class RoomRecipeComponent implements OnInit {
+  toggleDetail = false;
   displayedColumns: string[] = ['number', 'name', 'observation'];
   bedroomTable = new MatTableDataSource(tables.ROOM_LIST);
   list: any[];
@@ -24,6 +25,6 @@ export class RoomRecipeComponent implements OnInit {
     this.bedroomTable.filter = filterValue.trim().toLowerCase();
   }
   getRecord(row){
-    alert(row)
+    this.toggleDetail = !this.toggleDetail
   }
 }

@@ -2,3 +2,12 @@ mat-button-toggle-group {
     flex-wrap: wrap;
     overflow-x: scroll;
 }
+
+.tabs-ul {
+    list-style-type: none;
+    overflow-x: scroll;
+    width: 100%;
+    li {
+        display: inline;
+    }
+}

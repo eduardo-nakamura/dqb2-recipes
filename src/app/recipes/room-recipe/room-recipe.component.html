@@ -1,13 +1,16 @@
-<h2>Room Recipes</h2>
-
-<mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-    <mat-button-toggle *ngFor="let item of btnFilter" (click)="applyFilter(item)"> {{item}}</mat-button-toggle>
-    <mat-button-toggle (click)="applyFilter('')">Show All</mat-button-toggle>
-</mat-button-toggle-group>
+<div class="container-fluid">
+    <h2>Room Recipes</h2>
 
 
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+        <mat-button-toggle *ngFor="let item of btnFilter" (click)="applyFilter(item)">
+            {{item}}
+        </mat-button-toggle>
+        <!-- <mat-button-toggle (click)="applyFilter('')">Show All</mat-button-toggle> -->
+    </mat-button-toggle-group>
 
-<!-- <mat-tab-group>
+
+    <!-- <mat-tab-group>
     <mat-tab *ngFor="let item of btnFilter">
         <ng-template mat-tab-label>
             <span (click)="applyFilter(item)">{{item}}</span>
@@ -16,40 +19,45 @@
     <mat-tab (click)="applyFilter('')" label="Show All"> </mat-tab>
 
 </mat-tab-group> -->
-<!-- <button *ngFor="let item of btnFilter" (click)="applyFilter(item)"> {{item}} </button> -->
+    <!-- <button *ngFor="let item of btnFilter" (click)="applyFilter(item)"> {{item}} </button> -->
 
-<div class="row">
-    <div class="m-1 col-6">
-        <table mat-table [dataSource]="bedroomTable" matSort class="mat-elevation-z8 w-100">
+    <div class="row">
+        <div class="m-1 col">
+            <table mat-table [dataSource]="bedroomTable" matSort class="mat-elevation-z8 w-100">
 
-            <!-- Position Column -->
-            <ng-container matColumnDef="number">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
-                <td mat-cell *matCellDef="let element"> {{element.number}} </td>
-            </ng-container>
+                <!-- Position Column -->
+                <ng-container matColumnDef="number">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+                    <td mat-cell *matCellDef="let element"> {{element.number}} </td>
+                </ng-container>
 
-            <!-- Name Column -->
-            <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-            </ng-container>
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
 
-            <!-- Weight Column -->
-            <ng-container matColumnDef="observation">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Observation </th>
-                <td mat-cell *matCellDef="let element">
-                    {{element.observation}}
-                </td>
-            </ng-container>
+                <!-- Weight Column -->
+                <ng-container matColumnDef="observation">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Observation </th>
+                    <td mat-cell *matCellDef="let element">
+                        {{element.observation}}
+                    </td>
+                </ng-container>
 
-            <!-- Weight Column -->
-            <ng-container matColumnDef="roomType">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Room Type </th>
-                <td mat-cell *matCellDef="let element"> {{element.roomType}} </td>
-            </ng-container>
+                <!-- Weight Column -->
+                <ng-container matColumnDef="roomType">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Room Type </th>
+                    <td mat-cell *matCellDef="let element"> {{element.roomType}} </td>
+                </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="getRecord(row)"></tr>
-        </table>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="getRecord(row)"></tr>
+            </table>
+        </div>
+
+        <div class="m-1 col" *ngIf="toggleDetail">
+            teste
+        </div>
     </div>
 </div>

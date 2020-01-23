@@ -1,0 +1,7 @@
+ - ia listar os itens necessários pra fazer o quarto, talvez umas observações em relação ao quarto.
+ - no mobile duas telas sendo a segunda a imagem da direita com um botão de voltar 
+ - check nas receitas já feitas
+ - bestiario
+ - lista de materiais
+ - Poderia fazer também uma feature onde vc tem um material e a informação abaixo é onde ela poderia ser usada, em qual receita, Daí vc faz link com a receita específica
+ - Tava pensando em fazer uma telinha inicial com umas informações básicas ( Tamanho de salas, cores e ambiente... )
