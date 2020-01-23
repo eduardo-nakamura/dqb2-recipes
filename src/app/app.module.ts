@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { MatTableModule } from '@angular/material'  
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,10 +24,14 @@ import { RoomRecipeComponent,FoodRecipesComponent } from './recipes/';
     AppRoutingModule,
     MatTableModule,
     BrowserAnimationsModule ,
-    FormsModule
+    FormsModule,
+    MatButtonToggleModule,
+    MatTabsModule
   ],
   exports: [
-    MatTableModule
+    MatTableModule,
+    MatButtonToggleModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

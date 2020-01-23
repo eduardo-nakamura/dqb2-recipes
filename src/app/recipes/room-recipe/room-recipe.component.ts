@@ -8,18 +8,22 @@ import * as tables from './roomObj';
   styleUrls: ['./room-recipe.component.scss']
 })
 export class RoomRecipeComponent implements OnInit {
-  displayedColumns: string[] = ['number', 'name', 'shortDesc', 'roomType'];
-  bedroomTable = new MatTableDataSource(tables.ROOM_DATA);
+  displayedColumns: string[] = ['number', 'name', 'observation'];
+  bedroomTable = new MatTableDataSource(tables.ROOM_LIST);
   list: any[];
   btnFilter =['Bedroom',
     'Bathroom','Kitchen','Private Bedroom','Bar','Toilet','Changing','Workshop','Shop','Miscelaneous','Museum','More Miscelaneous','Special'
   ] 
   // @ViewChild(MatSort, {static: true}) sort: MatSort;
   ngOnInit() {
-    console.log(tables.ROOM_DATA)    
+    console.log(tables.ROOM_LIST)    
     // this.bedroomTable.sort = this.sort;
   }
-  applyFilter(filterValue: string) {    
+  applyFilter(filterValue: string) {   
+
     this.bedroomTable.filter = filterValue.trim().toLowerCase();
+  }
+  getRecord(row){
+    alert(row)
   }
 }

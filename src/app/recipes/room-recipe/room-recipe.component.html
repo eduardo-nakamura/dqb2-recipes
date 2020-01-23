@@ -1,41 +1,55 @@
 <h2>Room Recipes</h2>
 
-<button *ngFor="let item of btnFilter" (click)="applyFilter(item)"> {{item}} </button>
-<button (click)="applyFilter('')">Show All</button>
+<mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+    <mat-button-toggle *ngFor="let item of btnFilter" (click)="applyFilter(item)"> {{item}}</mat-button-toggle>
+    <mat-button-toggle (click)="applyFilter('')">Show All</mat-button-toggle>
+</mat-button-toggle-group>
 
-<div class="m-1">
-    <table mat-table [dataSource]="bedroomTable" matSort class="mat-elevation-z8 w-100">
 
-        <!-- Position Column -->
-        <ng-container matColumnDef="number">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
-            <td mat-cell *matCellDef="let element"> {{element.number}} </td>
-        </ng-container>
 
-        <!-- Name Column -->
-        <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-        </ng-container>
+<!-- <mat-tab-group>
+    <mat-tab *ngFor="let item of btnFilter">
+        <ng-template mat-tab-label>
+            <span (click)="applyFilter(item)">{{item}}</span>
+        </ng-template>
+    </mat-tab>
+    <mat-tab (click)="applyFilter('')" label="Show All"> </mat-tab>
 
-        <!-- Weight Column -->
-        <ng-container matColumnDef="shortDesc">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Components </th>
-            <td mat-cell *matCellDef="let element">
-                <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
-                    {{element.shortDesc}}
-                  </button>
+</mat-tab-group> -->
+<!-- <button *ngFor="let item of btnFilter" (click)="applyFilter(item)"> {{item}} </button> -->
 
-            </td>
-        </ng-container>
+<div class="row">
+    <div class="m-1 col-6">
+        <table mat-table [dataSource]="bedroomTable" matSort class="mat-elevation-z8 w-100">
 
-        <!-- Weight Column -->
-        <ng-container matColumnDef="roomType">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Room Type </th>
-            <td mat-cell *matCellDef="let element"> {{element.roomType}} </td>
-        </ng-container>
+            <!-- Position Column -->
+            <ng-container matColumnDef="number">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+                <td mat-cell *matCellDef="let element"> {{element.number}} </td>
+            </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="observation">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Observation </th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.observation}}
+                </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="roomType">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Room Type </th>
+                <td mat-cell *matCellDef="let element"> {{element.roomType}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="getRecord(row)"></tr>
+        </table>
+    </div>
 </div>
