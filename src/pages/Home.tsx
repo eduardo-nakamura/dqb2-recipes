@@ -20,7 +20,7 @@ export default function About() {
             <Grid container sx={{ background: 'rgba(0,0,0,0.8)', margin: '10px 0' }}>
                 {menuLinks.map((page, index) => (
 
-                    <Grid item xs={6} sm={4} key={index}>
+                    <Grid item xs={12} sm={6} key={index}>
                         <NavLink
                             style={{ textDecoration: 'none' }}
                             to={page.location}>

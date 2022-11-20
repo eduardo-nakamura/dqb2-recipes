@@ -10,6 +10,7 @@ import Materials from "./pages/Materials"
 import Rooms from "./pages/Rooms"
 import Sets from "./pages/Sets"
 import Home from "./pages/Home"
+import Mask from "./pages/Mask"
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -25,6 +26,7 @@ root.render(
         <Route path="materials" element={<Materials />} />
         <Route path="sets" element={<Sets />} />
         <Route path="rooms" element={<Rooms />} />
+        <Route path="mask" element={<Mask />} />
         
         <Route
           path="*"

@@ -1,7 +1,9 @@
-import { MenuItem, Grid, Box, TextField, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Container } from '@mui/material';
+import { Button, MenuItem, Grid, Box, TextField, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Container } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { materialList } from "../assets/data"
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import DeleteIcon from '@mui/icons-material/Delete';
+
 const filterOpt = ["Soggy Skerry", "Blossom Bay", "Iridescent Island", "Sunny Sands", "Rimey Reef", "laguna perfuma", "Coral Cay", "Defiled Isle", "Unholy Holm"]
 
 export default function About() {
@@ -19,23 +21,17 @@ export default function About() {
         setFilter(event.target.value as string);
     };
 
-    useEffect(() => {     
-        // materialListInit
-       
-        const results = rows.filter((man) =>
-            man.name.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-        
-        setRows(searchTerm ? results : materialListInit)
+    useEffect(() => {
+        const results = materialListInit.filter((man) => man.name.toLowerCase().includes(searchTerm.toLowerCase()));
+        const results2 = results.filter((man) => man.island.toLowerCase().includes(filter.toLowerCase()));
+        setRows(searchTerm ? results2 : materialListInit)
     }, [searchTerm]);
 
     useEffect(() => {
         // materialListInit
-        const results = materialListInit.filter((man) =>
-            man.island.toLowerCase().includes(filter.toLowerCase())
-        );
-        setRows(results)
-        setSearchTerm("")
+        const results = materialListInit.filter((man) => man.island.toLowerCase().includes(filter.toLowerCase()));
+        const results2 = results.filter((man) => man.name.toLowerCase().includes(searchTerm.toLowerCase()));
+        setRows(results2)
     }, [filter]);
 
     return (
@@ -47,16 +43,17 @@ export default function About() {
 
             <Box sx={{ background: '#facc01', padding: '10px', display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', borderRadius: '10px 10px 0 0' }}>
                 <Grid container spacing={2}>
-                    <Grid item xs={12} sm={9}>
+                    <Grid item xs={12} sm={6}>
                         <TextField
                             fullWidth
                             id="outlined-required"
                             label="Search Material Name"
                             value={searchTerm}
                             onChange={handleChange}
+                            size="small"
                         />
                     </Grid>
-                    <Grid item xs={12} sm={3}>
+                    <Grid item xs={8} sm={4}>
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
@@ -64,12 +61,19 @@ export default function About() {
                             fullWidth
                             label="filter"
                             onChange={handleFilter}
+                            size="small"
                         >
                             <MenuItem value={""}>All</MenuItem>
                             {filterOpt.map((opt) => (
                                 <MenuItem key={opt} value={opt}>{opt}</MenuItem>
                             ))}
                         </Select>
+                    </Grid>
+                    <Grid item xs={4} sm={2}>
+                        <Button fullWidth variant="contained" size="large" >
+                            <DeleteIcon sx={{mr:1 , p: 0}} /> Clear
+                     
+                        </Button>
                     </Grid>
                 </Grid>
             </Box>
